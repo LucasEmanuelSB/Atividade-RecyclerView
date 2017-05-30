@@ -9,5 +9,12 @@
     <string name="posto">Station:</string>
     <string name="confirmar">Confirm</string>
     <string name="litros">Liters</string>
-
+    
+    <string-array name="postos">
+        <item>Texaco</item>
+        <item>Shell</item>
+        <item>Petrobras</item>
+        <item>Ipiranga</item>
+        <item>Outros</item>
+    </string-array>
 </resources>

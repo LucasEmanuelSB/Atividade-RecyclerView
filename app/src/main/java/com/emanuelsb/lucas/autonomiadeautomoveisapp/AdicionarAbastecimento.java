@@ -1,9 +1,11 @@
 package com.emanuelsb.lucas.autonomiadeautomoveisapp;
 
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
@@ -11,7 +13,6 @@ import android.widget.Spinner;
 public class AdicionarAbastecimento extends AppCompatActivity {
 
     private EditText campoKm;
-
     private EditText campoLitros;
 
     private EditText campoDia;
@@ -34,6 +35,10 @@ public class AdicionarAbastecimento extends AppCompatActivity {
         campoMes = (EditText) findViewById(R.id.campoMes);
         campoAno = (EditText) findViewById(R.id.campoAno);
         spinnerPosto = (Spinner) findViewById(R.id.spinnerPosto);
+
+        ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.postos, android.R.layout.simple_spinner_item);
+        spinnerPosto.setAdapter(adapter);
+
         confirmar = (Button) findViewById(R.id.confirmar);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
@@ -45,6 +50,18 @@ public class AdicionarAbastecimento extends AppCompatActivity {
                 novoAba.setAno(Integer.parseInt(campoAno.getText().toString()));
                 novoAba.setKm(Integer.parseInt(campoKm.getText().toString()));
                 novoAba.setLitros(Integer.parseInt(campoLitros.getText().toString()));
+                if(spinnerPosto.getSelectedItem().toString().equals("Texaco")){
+                    novoAba.setPosto(R.drawable.logo_texaco);
+                } else if(spinnerPosto.getSelectedItem().toString().equals("Shell")){
+                    novoAba.setPosto(R.drawable.logo_shell);
+                } else if(spinnerPosto.getSelectedItem().toString().equals("Petrobras")){
+                    novoAba.setPosto(R.drawable.logo_petrobras);
+                } else if(spinnerPosto.getSelectedItem().toString().equals("Ipiranga")){
+                    novoAba.setPosto(R.drawable.logo_ipiranga);
+                } else {
+                    novoAba.setPosto(R.drawable.outros);
+                }
+
                 Abastecimento.listaAbastecimentos.add(novoAba);
                 startActivity(new Intent(getApplicationContext(), VisualizarAbastecimento.class));
             }

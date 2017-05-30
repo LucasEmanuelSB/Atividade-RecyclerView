@@ -1,5 +1,7 @@
 package com.emanuelsb.lucas.autonomiadeautomoveisapp;
 
+import android.widget.ImageView;
+
 import java.util.ArrayList;
 
 /**
@@ -13,12 +15,9 @@ public class Abastecimento {
     private int dia;
     private int mes;
     private int ano;
-
     private int km;
-
     private  int litros;
-
-    private String urlImage;
+    private int posto;
 
     public int getDia() {
         return dia;
@@ -60,11 +59,11 @@ public class Abastecimento {
         this.litros = litros;
     }
 
-    public String getUrlImage() {
-        return urlImage;
+    public int getPosto() {
+        return posto;
     }
 
-    public void setUrlImage(String urlImage) {
-        this.urlImage = urlImage;
+    public void setPosto(int posto) {
+        this.posto = posto;
     }
 }

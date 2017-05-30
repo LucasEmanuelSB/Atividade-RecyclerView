@@ -5,7 +5,9 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-public class Item extends AppCompatActivity {
+import java.io.Serializable;
+
+public class Item extends AppCompatActivity{
 
     private ImageView icone;
     private TextView data;
@@ -21,8 +23,8 @@ public class Item extends AppCompatActivity {
         data = (TextView) findViewById(R.id.data);
         valueKm = (TextView) findViewById(R.id.valueKm);
         valueLitros = (TextView) findViewById(R.id.valueLitros);
-        String url = getIntent().getStringExtra("url");
-        data.setText( getIntent().getStringExtra("data"));
+        //icone.setImageResource(getIntent().getIntExtra("posto"));
+        data.setText( getIntent().getStringExtra("dia") + "/" + getIntent().getStringExtra("mes") + "/" + getIntent().getStringExtra("ano"));
         valueKm.setText( getIntent().getStringExtra("km"));
         valueLitros.setText( getIntent().getStringExtra("litros"));
     }

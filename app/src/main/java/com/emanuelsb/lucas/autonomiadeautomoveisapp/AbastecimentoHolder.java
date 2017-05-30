@@ -2,6 +2,7 @@ package com.emanuelsb.lucas.autonomiadeautomoveisapp;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
@@ -32,12 +33,11 @@ public class AbastecimentoHolder extends RecyclerView.ViewHolder implements View
         data = (TextView) itemView.findViewById(R.id.data);
         valueKm = (TextView) itemView.findViewById(R.id.valueKm);
         valueLitros = (TextView) itemView.findViewById(R.id.valueLitros);
-        objAbastecimento.setUrlImage(icone.toString());
         itemView.setOnClickListener(this);
     }
 
     public void renderizaNovoAbastecimento(Abastecimento aba) {
-        this.icone.setImageDrawable(icone.getDrawable());
+        this.icone.setImageResource(aba.getPosto());
         this.data.setText(aba.getDia() + "/" + aba.getMes() + "/" + aba.getAno());
         this.valueKm.setText(aba.getKm());
         this.valueLitros.setText(aba.getLitros());
@@ -48,8 +48,10 @@ public class AbastecimentoHolder extends RecyclerView.ViewHolder implements View
     public void onClick(View v) {
         Intent intent;
         intent =  new Intent(context, Item.class);
-        intent.putExtra("url", objAbastecimento.getUrlImage());
-        intent.putExtra("data",objAbastecimento.getDia() + "/" + objAbastecimento.getMes() + "/" + objAbastecimento.getAno());
+        intent.putExtra("posto", objAbastecimento.getPosto());
+        intent.putExtra("dia",objAbastecimento.getDia());
+        intent.putExtra("mes",objAbastecimento.getMes());
+        intent.putExtra("ano",objAbastecimento.getAno());
         intent.putExtra("km", objAbastecimento.getKm());
         intent.putExtra("litros", objAbastecimento.getLitros());
         context.startActivity(intent);
