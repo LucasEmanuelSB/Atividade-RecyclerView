@@ -14,7 +14,9 @@ public class AdicionarAbastecimento extends AppCompatActivity {
 
     private EditText campoLitros;
 
-    private EditText campoData;
+    private EditText campoDia;
+    private EditText campoMes;
+    private EditText campoAno;
 
     private Spinner spinnerPosto;
 
@@ -28,13 +30,22 @@ public class AdicionarAbastecimento extends AppCompatActivity {
 
         campoKm = (EditText) findViewById(R.id.campoKm);
         campoLitros = (EditText) findViewById(R.id.campoLitros);
-        campoData = (EditText) findViewById(R.id.campoData);
+        campoDia = (EditText) findViewById(R.id.campoDia);
+        campoMes = (EditText) findViewById(R.id.campoMes);
+        campoAno = (EditText) findViewById(R.id.campoAno);
         spinnerPosto = (Spinner) findViewById(R.id.spinnerPosto);
         confirmar = (Button) findViewById(R.id.confirmar);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                Abastecimento novoAba = new Abastecimento();
+                novoAba.setDia(Integer.parseInt(campoDia.getText().toString()));
+                novoAba.setMes(Integer.parseInt(campoMes.getText().toString()));
+                novoAba.setAno(Integer.parseInt(campoAno.getText().toString()));
+                novoAba.setKm(Integer.parseInt(campoKm.getText().toString()));
+                novoAba.setLitros(Integer.parseInt(campoLitros.getText().toString()));
+                Abastecimento.listaAbastecimentos.add(novoAba);
                 startActivity(new Intent(getApplicationContext(), VisualizarAbastecimento.class));
             }
         });

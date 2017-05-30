@@ -13,29 +13,45 @@ import android.widget.Toast;
  * Created by lucas on 27/05/2017.
  */
 
-public class AbastecimentoHolder extends RecyclerView.ViewHolder {
+public class AbastecimentoHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
-    private ImageView fotografia;
-
-    private TextView nome;
+    private ImageView icone;
+    private TextView data;
+    private TextView valueKm;
+    private TextView valueLitros;
 
     private final Context context;
 
     private Abastecimento objAbastecimento;
 
-    public CarroAbastecimento(View itemView) {
+    public AbastecimentoHolder(View itemView) {
         super(itemView);
         context = itemView.getContext();
 
-        fotografia = (ImageView) itemView.findViewById(R.id.fotografia);
-        nome = (TextView) itemView.findViewById(R.id.nome);
+        icone = (ImageView) itemView.findViewById(R.id.icone);
+        data = (TextView) itemView.findViewById(R.id.data);
+        valueKm = (TextView) itemView.findViewById(R.id.valueKm);
+        valueLitros = (TextView) itemView.findViewById(R.id.valueLitros);
+        objAbastecimento.setUrlImage(icone.toString());
         itemView.setOnClickListener(this);
-
     }
 
     public void renderizaNovoAbastecimento(Abastecimento aba) {
-        this.nome.setText(aba.getNome());
+        this.icone.setImageDrawable(icone.getDrawable());
+        this.data.setText(aba.getDia() + "/" + aba.getMes() + "/" + aba.getAno());
+        this.valueKm.setText(aba.getKm());
+        this.valueLitros.setText(aba.getLitros());
         objAbastecimento = aba;
+    }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        intent =  new Intent(context, Item.class);
+        intent.putExtra("url", objAbastecimento.getUrlImage());
+        intent.putExtra("data",objAbastecimento.getDia() + "/" + objAbastecimento.getMes() + "/" + objAbastecimento.getAno());
+        intent.putExtra("km", objAbastecimento.getKm());
+        intent.putExtra("litros", objAbastecimento.getLitros());
+        context.startActivity(intent);
     }
 }
