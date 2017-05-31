@@ -26,7 +26,6 @@ public class AbastecimentoAdapter extends RecyclerView.Adapter<AbastecimentoHold
     }
 
     public AbastecimentoAdapter() {
-
     }
 
     @Override
@@ -46,5 +45,5 @@ public class AbastecimentoAdapter extends RecyclerView.Adapter<AbastecimentoHold
     public int getItemCount() {
         return listaAbastecimentos.size();
     }
-    
+
 }

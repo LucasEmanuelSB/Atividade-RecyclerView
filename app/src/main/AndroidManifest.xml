@@ -18,7 +18,6 @@
             </intent-filter>
         </activity>
         <activity android:name=".AdicionarAbastecimento" />
-        <activity android:name=".Item" />
         <activity android:name=".VisualizarAbastecimento"></activity>
     </application>
 

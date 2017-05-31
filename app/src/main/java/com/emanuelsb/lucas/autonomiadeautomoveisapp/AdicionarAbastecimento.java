@@ -38,7 +38,6 @@ public class AdicionarAbastecimento extends AppCompatActivity {
 
         ArrayAdapter adapter = ArrayAdapter.createFromResource(this, R.array.postos, android.R.layout.simple_spinner_item);
         spinnerPosto.setAdapter(adapter);
-
         confirmar = (Button) findViewById(R.id.confirmar);
 
         confirmar.setOnClickListener(new View.OnClickListener() {
@@ -61,10 +60,11 @@ public class AdicionarAbastecimento extends AppCompatActivity {
                 } else {
                     novoAba.setPosto(R.drawable.outros);
                 }
-
                 Abastecimento.listaAbastecimentos.add(novoAba);
+
                 startActivity(new Intent(getApplicationContext(), VisualizarAbastecimento.class));
             }
         });
     }
+
 }

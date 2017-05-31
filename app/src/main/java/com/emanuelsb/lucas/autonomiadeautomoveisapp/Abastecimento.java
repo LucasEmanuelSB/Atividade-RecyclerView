@@ -16,7 +16,7 @@ public class Abastecimento {
     private int mes;
     private int ano;
     private int km;
-    private  int litros;
+    private int litros;
     private int posto;
 
     public int getDia() {
