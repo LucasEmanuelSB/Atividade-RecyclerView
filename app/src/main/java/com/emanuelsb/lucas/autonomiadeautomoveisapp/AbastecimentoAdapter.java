@@ -15,17 +15,12 @@ import java.util.ArrayList;
 public class AbastecimentoAdapter extends RecyclerView.Adapter<AbastecimentoHolder> {
 
     private ArrayList<Abastecimento> listaAbastecimentos;
-
-    public void setListaAbastecimentos(ArrayList<Abastecimento> lista) {
-        this.listaAbastecimentos = lista;
-    }
+    private Context context;
 
 
-    public ArrayList<Abastecimento> getListaAbastecimentos(){
-        return this.listaAbastecimentos;
-    }
-
-    public AbastecimentoAdapter() {
+    public AbastecimentoAdapter(ArrayList<Abastecimento> aba, Context context) {
+        this.listaAbastecimentos = aba;
+        this.context = context;
     }
 
     @Override

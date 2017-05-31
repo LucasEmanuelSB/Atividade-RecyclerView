@@ -2,6 +2,7 @@ package com.emanuelsb.lucas.autonomiadeautomoveisapp;
 
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.provider.Settings;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -43,8 +44,9 @@ public class AdicionarAbastecimento extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                /*
+
                 Abastecimento novoAba = new Abastecimento();
+
                 novoAba.setDia(Integer.parseInt(campoDia.getText().toString()));
                 novoAba.setMes(Integer.parseInt(campoMes.getText().toString()));
                 novoAba.setAno(Integer.parseInt(campoAno.getText().toString()));
@@ -61,8 +63,9 @@ public class AdicionarAbastecimento extends AppCompatActivity {
                 } else {
                     novoAba.setPosto(R.drawable.outros);
                 }
+
                 Abastecimento.listaAbastecimentos.add(novoAba);
-                */
+
                 startActivity(new Intent(getApplicationContext(), VisualizarAbastecimento.class));
             }
         });

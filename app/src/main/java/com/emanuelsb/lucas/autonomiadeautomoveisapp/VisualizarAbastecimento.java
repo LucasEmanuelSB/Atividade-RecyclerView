@@ -19,17 +19,9 @@ public class VisualizarAbastecimento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_abastecimento);
 
-        Abastecimento.listaAbastecimentos = new ArrayList<>();
-        Abastecimento.listaAbastecimentos.add(new Abastecimento(5,5,5,5,5,5));
-        Abastecimento.listaAbastecimentos.add(new Abastecimento(5,5,5,5,5,5));
-        Abastecimento.listaAbastecimentos.add(new Abastecimento(5,5,5,5,5,5));
-
         rvAbastecimento = (RecyclerView)findViewById(R.id.rvAbastecimento);
-        rvAbastecimento.setLayoutManager(new LinearLayoutManager(this.getApplicationContext()));
-        abastecimentoAdapter = new AbastecimentoAdapter();
-        abastecimentoAdapter.setListaAbastecimentos(Abastecimento.listaAbastecimentos);
-        rvAbastecimento.setAdapter(abastecimentoAdapter);
-
+        rvAbastecimento.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
+        rvAbastecimento.setAdapter(new AbastecimentoAdapter(Abastecimento.listaAbastecimentos, this));
     }
 
     @Override

@@ -29,6 +29,9 @@ public class Abastecimento {
         this.posto = posto;
     }
 
+    public Abastecimento(){
+
+     }
     public int getDia() {
         return dia;
     }
