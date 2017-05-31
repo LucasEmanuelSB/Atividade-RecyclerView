@@ -43,6 +43,7 @@ public class AdicionarAbastecimento extends AppCompatActivity {
         confirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                /*
                 Abastecimento novoAba = new Abastecimento();
                 novoAba.setDia(Integer.parseInt(campoDia.getText().toString()));
                 novoAba.setMes(Integer.parseInt(campoMes.getText().toString()));
@@ -61,7 +62,7 @@ public class AdicionarAbastecimento extends AppCompatActivity {
                     novoAba.setPosto(R.drawable.outros);
                 }
                 Abastecimento.listaAbastecimentos.add(novoAba);
-
+                */
                 startActivity(new Intent(getApplicationContext(), VisualizarAbastecimento.class));
             }
         });

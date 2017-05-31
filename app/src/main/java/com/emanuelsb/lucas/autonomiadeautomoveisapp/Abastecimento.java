@@ -19,6 +19,16 @@ public class Abastecimento {
     private int litros;
     private int posto;
 
+    public Abastecimento(int dia, int mes, int ano, int km, int litros, int posto){
+
+        this.dia = dia;
+        this.mes = mes;
+        this.ano = ano;
+        this.km = km;
+        this.litros = litros;
+        this.posto = posto;
+    }
+
     public int getDia() {
         return dia;
     }

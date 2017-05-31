@@ -14,14 +14,13 @@ import android.widget.Toast;
  * Created by lucas on 27/05/2017.
  */
 
-public class AbastecimentoHolder extends RecyclerView.ViewHolder {
+public class AbastecimentoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
+    private final Context context;
     private ImageView icone;
     private TextView data;
     private TextView valueKm;
     private TextView valueLitros;
-
-    private final Context context;
 
     private Abastecimento objAbastecimento;
 
@@ -43,4 +42,13 @@ public class AbastecimentoHolder extends RecyclerView.ViewHolder {
         objAbastecimento = aba;
     }
 
+    @Override
+    public void onClick(View v) {
+        Intent intent;
+        intent =  new Intent(context, DetalheAbastecimento.class);
+        intent.putExtra("km", objAbastecimento.getKm());
+        context.startActivity(intent);
+    }
 }
+
+
