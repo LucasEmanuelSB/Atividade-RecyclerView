@@ -26,9 +26,6 @@ public class TelaPrincipal extends AppCompatActivity {
         vizual = (Button) findViewById(R.id.vizual);
         autonomia = (TextView) findViewById(R.id.autonomia);
 
-        autonomiaAtual = autonomiaAtual + atualizaAutonomia();
-        autonomia.setText(Integer.toString(autonomiaAtual));
-
         add.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -60,6 +57,13 @@ public class TelaPrincipal extends AppCompatActivity {
         }
 
         return x;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        autonomiaAtual = + autonomiaAtual + atualizaAutonomia();
+        autonomia.setText(Integer.toString(autonomiaAtual));
     }
 
 }

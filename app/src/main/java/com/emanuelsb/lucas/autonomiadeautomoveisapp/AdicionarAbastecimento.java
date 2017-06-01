@@ -65,7 +65,7 @@ public class AdicionarAbastecimento extends AppCompatActivity {
 
                 Abastecimento.listaAbastecimentos.add(novoAba);
 
-                startActivity(new Intent(getApplicationContext(), VisualizarAbastecimento.class));
+                finish();
             }
         });
     }
