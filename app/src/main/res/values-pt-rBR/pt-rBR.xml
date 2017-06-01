@@ -6,9 +6,9 @@
     <string name="atual">Autonomia atual</string>
     <string name="quilo_atual">Quilometragem atual:</string>
     <string name="litros_abastecidos">Litros abastecidos:</string>
-    <string name="data">Data de nascimento:</string>
+    <string name="data">Data de criação:</string>
     <string name="posto">Posto:</string>
     <string name="confirmar">Confirmar</string>
-    <string name="litros">Litros</string>
+    <string name="litros">Litros:</string>
 
 </resources>

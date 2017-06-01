@@ -14,7 +14,7 @@ import android.widget.Toast;
  * Created by lucas on 27/05/2017.
  */
 
-public class AbastecimentoHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class AbastecimentoHolder extends RecyclerView.ViewHolder {
 
     private final Context context;
     private ImageView icone;
@@ -37,18 +37,11 @@ public class AbastecimentoHolder extends RecyclerView.ViewHolder implements View
     public void renderizaNovoAbastecimento(Abastecimento aba) {
         this.icone.setImageResource(aba.getPosto());
         this.data.setText(aba.getDia() + "/" + aba.getMes() + "/" + aba.getAno());
-        this.valueKm.setText(aba.getKm());
-        this.valueLitros.setText(aba.getLitros());
+        this.valueKm.setText(Integer.toString(aba.getKm()));
+        this.valueLitros.setText(Integer.toString(aba.getLitros()));
         objAbastecimento = aba;
     }
 
-    @Override
-    public void onClick(View v) {
-        Intent intent;
-        intent =  new Intent(context, DetalheAbastecimento.class);
-        intent.putExtra("km", objAbastecimento.getKm());
-        context.startActivity(intent);
-    }
 }
 
 

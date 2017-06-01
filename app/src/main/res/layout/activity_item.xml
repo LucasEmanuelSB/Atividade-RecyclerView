@@ -1,85 +1,68 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/item"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    tools:context="com.emanuelsb.lucas.autonomiadeautomoveisapp.Item">
+    android:layout_height="80dp"
+    android:layout_margin="8dp"
+    android:paddingBottom="8dp"
+
+    android:paddingTop="8dp">
+
+    <ImageView
+        android:id="@+id/icone"
+        android:layout_width="48dp"
+        android:layout_height="48dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="18dp"
+        android:src="@drawable/outros" />
 
     <TextView
         android:id="@+id/data"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true"
         android:layout_marginLeft="8dp"
-        android:layout_marginTop="16dp"
-        android:text="data de nascimento"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginRight="8dp"
+        android:text="@string/data"
+        android:textSize="18sp" />
 
     <TextView
-        android:id="@+id/textView10"
+        android:id="@+id/textView9"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="8dp"
-        android:text="Km:"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/data" />
+        android:layout_alignBaseline="@+id/data"
+        android:layout_alignBottom="@+id/data"
+        android:layout_marginStart="14dp"
+        android:layout_toEndOf="@+id/icone"
+        android:text="Km:" />
 
     <TextView
         android:id="@+id/valueKm"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="8dp"
         android:text="value"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toRightOf="@+id/textView10"
-        app:layout_constraintTop_toBottomOf="@+id/data"
-        app:layout_constraintVertical_bias="0.571" />
+        android:layout_alignBottom="@+id/data"
+        android:layout_alignStart="@+id/valueLitros" />
 
     <TextView
-        android:id="@+id/textView12"
+        android:id="@+id/textView13"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginLeft="8dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="0dp"
         android:text="@string/litros"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintLeft_toRightOf="@+id/valueKm"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/data"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <ImageView
-        android:id="@+id/icone"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="16dp"
-        android:layout_marginRight="8dp"
-        android:layout_marginTop="8dp"
-        android:tint="@color/cinza"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/data"
-        app:layout_constraintVertical_bias="0.0"
-        app:srcCompat="@drawable/outros" />
+        android:layout_alignBaseline="@+id/valueLitros"
+        android:layout_alignBottom="@+id/valueLitros"
+        android:layout_alignStart="@+id/textView9" />
 
     <TextView
         android:id="@+id/valueLitros"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="8dp"
-        android:layout_marginTop="0dp"
-        android:text="valueLitros"
-        app:layout_constraintLeft_toRightOf="@+id/textView12"
-        app:layout_constraintTop_toTopOf="@+id/textView12" />
+        android:layout_marginStart="36dp"
+        android:text="value"
+        android:layout_alignBottom="@+id/icone"
+        android:layout_toEndOf="@+id/textView13" />
 
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
+
+

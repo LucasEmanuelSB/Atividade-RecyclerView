@@ -24,7 +24,6 @@ public class AdicionarAbastecimento extends AppCompatActivity {
 
     private Button confirmar;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

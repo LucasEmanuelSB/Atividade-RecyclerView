@@ -19,7 +19,6 @@
         </activity>
         <activity android:name=".AdicionarAbastecimento" />
         <activity android:name=".VisualizarAbastecimento" />
-        <activity android:name=".DetalheAbastecimento"></activity>
     </application>
 
 </manifest>

@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 public class Abastecimento {
 
-    public static ArrayList<Abastecimento> listaAbastecimentos;
+    public static ArrayList<Abastecimento> listaAbastecimentos = new ArrayList<>();
 
     private int dia;
     private int mes;

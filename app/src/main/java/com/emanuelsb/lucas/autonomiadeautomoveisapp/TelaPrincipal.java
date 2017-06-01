@@ -15,6 +15,8 @@ public class TelaPrincipal extends AppCompatActivity {
 
     private TextView autonomia;
 
+    private static int autonomiaAtual;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +25,9 @@ public class TelaPrincipal extends AppCompatActivity {
         add = (Button) findViewById(R.id.add);
         vizual = (Button) findViewById(R.id.vizual);
         autonomia = (TextView) findViewById(R.id.autonomia);
+
+        autonomiaAtual = autonomiaAtual + atualizaAutonomia();
+        autonomia.setText(Integer.toString(autonomiaAtual));
 
         add.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,4 +44,22 @@ public class TelaPrincipal extends AppCompatActivity {
         });
 
     }
+
+    public int atualizaAutonomia(){
+
+        int x = 0;
+        int litros = 0;
+
+        if(Abastecimento.listaAbastecimentos.size() > 0){
+            for(int i = 0; i < Abastecimento.listaAbastecimentos.size(); i++){
+                x = x + Abastecimento.listaAbastecimentos.get(i).getKm();
+                litros = litros + Abastecimento.listaAbastecimentos.get(i).getLitros();
+            }
+
+            x = x/litros;
+        }
+
+        return x;
+    }
+
 }
