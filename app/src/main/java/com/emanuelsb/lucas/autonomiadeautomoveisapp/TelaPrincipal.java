@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class TelaPrincipal extends AppCompatActivity {
 
@@ -15,7 +16,7 @@ public class TelaPrincipal extends AppCompatActivity {
 
     private TextView autonomia;
 
-    private static int autonomiaAtual;
+    private static int autonomiaAtual = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,27 +43,32 @@ public class TelaPrincipal extends AppCompatActivity {
 
     }
 
-    public int atualizaAutonomia(){
-
-        int x = 0;
-        int litros = 0;
-
-        if(Abastecimento.listaAbastecimentos.size() > 0){
-            for(int i = 0; i < Abastecimento.listaAbastecimentos.size(); i++){
-                x = x + Abastecimento.listaAbastecimentos.get(i).getKm();
-                litros = litros + Abastecimento.listaAbastecimentos.get(i).getLitros();
-            }
-
-            x = x/litros;
-        }
-
-        return x;
-    }
-
     @Override
     public void onResume(){
         super.onResume();
-        autonomiaAtual = + autonomiaAtual + atualizaAutonomia();
+
+        int x = 0;
+        int y = 0;
+
+        if(autonomiaAtual == 0){
+
+            if(Abastecimento.listaAbastecimentos.size() > 0){
+                for(int i = 0; i < Abastecimento.listaAbastecimentos.size(); i++){
+
+                    x = x + Abastecimento.listaAbastecimentos.get(i).getKm();
+                    y = y + Abastecimento.listaAbastecimentos.get(i).getLitros();
+                }
+
+                autonomiaAtual = x/y;
+            }
+
+        } else if(autonomiaAtual > 0) {
+
+            int km = Abastecimento.listaAbastecimentos.get(Abastecimento.listaAbastecimentos.size() -1 ).getKm();
+            int litros = Abastecimento.listaAbastecimentos.get(Abastecimento.listaAbastecimentos.size() -1).getLitros();
+            autonomiaAtual = autonomiaAtual + km/litros;
+        }
+
         autonomia.setText(Integer.toString(autonomiaAtual));
     }
 

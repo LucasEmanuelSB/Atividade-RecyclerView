@@ -64,7 +64,6 @@ public class AdicionarAbastecimento extends AppCompatActivity {
                 }
 
                 Abastecimento.listaAbastecimentos.add(novoAba);
-
                 finish();
             }
         });

@@ -12,6 +12,8 @@ public class Abastecimento {
 
     public static ArrayList<Abastecimento> listaAbastecimentos = new ArrayList<>();
 
+    private static int autonomia;
+
     private int dia;
     private int mes;
     private int ano;
