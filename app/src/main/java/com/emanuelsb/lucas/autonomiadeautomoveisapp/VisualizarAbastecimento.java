@@ -19,6 +19,7 @@ public class VisualizarAbastecimento extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_visualizar_abastecimento);
 
+        Abastecimento.listaAbastecimentos =
         rvAbastecimento = (RecyclerView)findViewById(R.id.rvAbastecimento);
         rvAbastecimento.setLayoutManager(new LinearLayoutManager(this.getApplicationContext(), LinearLayoutManager.VERTICAL, false));
         rvAbastecimento.setAdapter(new AbastecimentoAdapter(Abastecimento.listaAbastecimentos, this));
