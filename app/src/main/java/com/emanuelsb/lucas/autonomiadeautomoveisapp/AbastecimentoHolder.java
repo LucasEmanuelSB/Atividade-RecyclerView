@@ -1,14 +1,10 @@
 package com.emanuelsb.lucas.autonomiadeautomoveisapp;
 
 import android.content.Context;
-import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 /**
  * Created by lucas on 27/05/2017.

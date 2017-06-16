@@ -1,18 +1,17 @@
 package com.emanuelsb.lucas.autonomiadeautomoveisapp;
 
-import android.widget.ImageView;
-
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import java.util.ArrayList;
 
+import com.emanuelsb.lucas.autonomiadeautomoveisapp.storage.BdHelper;
 /**
  * Created by lucas on 27/05/2017.
  */
 
 public class Abastecimento {
-
-    public static ArrayList<Abastecimento> listaAbastecimentos = new ArrayList<>();
-
-    private static int autonomia;
 
     private int dia;
     private int mes;
@@ -33,7 +32,66 @@ public class Abastecimento {
 
     public Abastecimento(){
 
-     }
+    }
+
+    public static void salvarNoBancoDeDados(Context context, Abastecimento aba) {
+        BdHelper bdHelper = new BdHelper( context );
+        SQLiteDatabase bd = bdHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("dia", aba.getDia());
+        values.put("mes", aba.getMes());
+        values.put("ano", aba.getAno());
+        values.put("km", aba.getKm());
+        values.put("litros", aba.getLitros());
+        values.put("posto", aba.getPosto());
+
+        bd.insert("minha_tabela", null, values);
+
+    }
+
+    public static ArrayList<Abastecimento> obtemLista(Context context) {
+        ArrayList<Abastecimento> listaAbastecimento = new ArrayList<>();
+        BdHelper bdHelper = new BdHelper(context);
+        SQLiteDatabase db = bdHelper.getReadableDatabase();
+
+        String[] projecao = {
+                "dia",
+                "mes",
+                "ano",
+                "km",
+                "litros",
+                "posto"};
+
+        String orderBy = "id ASC";
+
+        Cursor c = db.query(
+                "minha_tabela",
+                projecao,
+                null,
+                null,
+                null,
+                null,
+                orderBy
+        );
+
+        if(c.moveToFirst()){
+            do{
+                Abastecimento aba = new Abastecimento();
+                aba.setDia(c.getInt(0));
+                aba.setMes(c.getInt(1));
+                aba.setAno(c.getInt(2));
+                aba.setKm(c.getInt(3));
+                aba.setLitros(c.getInt(4));
+                aba.setPosto(c.getInt(5));
+                listaAbastecimento.add(aba);
+            } while (c.moveToNext());
+        }
+
+
+        return listaAbastecimento;
+    }
+
     public int getDia() {
         return dia;
     }

@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 public class TelaPrincipal extends AppCompatActivity {
 
@@ -15,8 +14,6 @@ public class TelaPrincipal extends AppCompatActivity {
     private Button vizual;
 
     private TextView autonomia;
-
-    private static int autonomiaAtual = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,33 +40,28 @@ public class TelaPrincipal extends AppCompatActivity {
 
     }
 
+    public String atualizaAutonomia () {
+        int autonomiaAtualizada = 0;
+        if(Abastecimento.obtemLista(TelaPrincipal.this).size() == 1) {
+            int km = Abastecimento.obtemLista(TelaPrincipal.this).get(Abastecimento.obtemLista(TelaPrincipal.this).size()).getKm();
+            int litros = Abastecimento.obtemLista(TelaPrincipal.this).get(Abastecimento.obtemLista(TelaPrincipal.this).size()).getLitros();
+            autonomiaAtualizada = km/litros;
+            return Integer.toString(autonomiaAtualizada);
+        } else if(Abastecimento.obtemLista(TelaPrincipal.this).size() >= 2) {
+            int finalKm = Abastecimento.obtemLista(TelaPrincipal.this).get(Abastecimento.obtemLista(TelaPrincipal.this).size() - 1).getKm();
+            int inicialKm = Abastecimento.obtemLista(TelaPrincipal.this).get(Abastecimento.obtemLista(TelaPrincipal.this).size() - 2).getKm();
+            int litrosTotais = Abastecimento.obtemLista(TelaPrincipal.this).get(Abastecimento.obtemLista(TelaPrincipal.this).size() - 2).getLitros();
+            autonomiaAtualizada = (finalKm - inicialKm) / litrosTotais;
+            return Integer.toString(autonomiaAtualizada);
+        }else{
+            return "0";
+        }
+    }
+
     @Override
     public void onResume(){
         super.onResume();
-
-        int x = 0;
-        int y = 0;
-
-        if(autonomiaAtual == 0){
-
-            if(Abastecimento.listaAbastecimentos.size() > 0){
-                for(int i = 0; i < Abastecimento.listaAbastecimentos.size(); i++){
-
-                    x = x + Abastecimento.listaAbastecimentos.get(i).getKm();
-                    y = y + Abastecimento.listaAbastecimentos.get(i).getLitros();
-                }
-
-                autonomiaAtual = x/y;
-            }
-
-        } else if(autonomiaAtual > 0) {
-
-            int km = Abastecimento.listaAbastecimentos.get(Abastecimento.listaAbastecimentos.size() -1 ).getKm();
-            int litros = Abastecimento.listaAbastecimentos.get(Abastecimento.listaAbastecimentos.size() -1).getLitros();
-            autonomiaAtual = autonomiaAtual + km/litros;
-        }
-
-        autonomia.setText(Integer.toString(autonomiaAtual));
+        autonomia.setText(atualizaAutonomia());
     }
 
 }
